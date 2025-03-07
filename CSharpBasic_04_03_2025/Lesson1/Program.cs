@@ -13,7 +13,7 @@ internal class Program
         //int aget = 1033123;
 
         //double weight1 = 100.10;
-        //float weight2 = 100.10f;
+        //float weight2 = 100.10;
 
         //bool isWinter = false;
         //bool isSpring = true;
