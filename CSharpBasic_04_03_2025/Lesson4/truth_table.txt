@@ -1,0 +1,53 @@
+﻿AND - &&
+OR - ||
+NOT - !
+XOR - ^
+
+Logical operators:
+&& || !
+
+Bits operators:
+&, |, ^
+
+true = 1
+false = 0
+
+AND &&
+
+true && true = true
+true && false = false
+false && true = false
+false && false = false
+
+1 && 1 = 1
+1 && 0 = 0
+0 && 1 = 0
+0 && 0 = 0
+
+OR ||
+
+1 || 1 = 1
+1 || 0 = 1
+0 || 1 = 1
+0 || 0 = 0
+
+NOT !
+
+!true = false
+!false = true
+
+!1 = 0
+!0 = 1
+
+XOR ^
+
+true && true = false
+true && false = true
+false && true = true
+false && false = false
+
+1 && 1 = 0
+1 && 0 = 1
+0 && 1 = 1
+0 && 0 = 0
+

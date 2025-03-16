@@ -162,6 +162,10 @@ namespace Lesson2
             int castInt = (int)longNumber;
 
             Console.WriteLine(castInt);
+
+
+
+
         }
 
         static void MyFunc()
