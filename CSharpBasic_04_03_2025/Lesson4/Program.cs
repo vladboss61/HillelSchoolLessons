@@ -6,6 +6,22 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        int temperature = 0;
+        string weather = Console.ReadLine();
+
+        //if (weather == "rain")
+        //{
+        //    temperature = 5;
+        //}
+        //else
+        //{
+        //    temperature = 15;
+        //}
+
+        temperature = weather == "rain" ? 5 : 15;
+        Console.WriteLine(temperature);
+
+
         int x = 10;
         int y = 20;
         int z = x + y + x * (10);
