@@ -105,12 +105,12 @@ internal class Program
     {
         // Введення початкової суми вкладу та кількості місяців
         Console.Write("Введіть суму вкладу: ");
-        decimal deposit = Convert.ToDecimal(Console.ReadLine());
+        double deposit = Convert.ToDouble(Console.ReadLine());
 
         Console.Write("Введіть кількість місяців: ");
         int months = Convert.ToInt32(Console.ReadLine());
 
-        decimal interestRate = 0.07m; // 7% відсотків на місяць
+        double interestRate = 0.07; // 7% відсотків на місяць
 
         // Цикл для нарахування відсотків кожного місяця
         for (int i = 1; i <= months; i++)
