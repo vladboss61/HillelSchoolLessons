@@ -30,7 +30,8 @@ class CoffeeShop
 
     public void DisplayMenu()
     {
-        Console.WriteLine("\nМеню кав'ярні:");
+        Console.WriteLine();
+        Console.WriteLine("Меню кав'ярні:");
         foreach (var item in _menu)
         {
             Console.WriteLine($"{item.Key}: ${item.Value:F2}");
@@ -43,7 +44,7 @@ class CoffeeShop
         {
             if (_cart.ContainsKey(item))
             {
-                _cart[item] += quantity;
+                _cart[item] = _cart[item] + quantity;
             }
             else
             {
@@ -64,8 +65,8 @@ class CoffeeShop
             Console.WriteLine("Кошик порожній.");
             return;
         }
-
-        Console.WriteLine("\nВаш кошик:");
+        Console.WriteLine();
+        Console.WriteLine("Ваш кошик:");
         double total = 0;
         foreach (var item in _cart)
         {
@@ -92,13 +93,16 @@ class CoffeeShop
 
 class StartProgram
 {
-    static void Start()
+    public static void Start()
     {
         CoffeeShop shop = new CoffeeShop();
 
+        bool isFinish = false;
+
         while (true)
         {
-            Console.WriteLine("\n1. Переглянути меню");
+            Console.WriteLine();
+            Console.WriteLine("1. Переглянути меню");
             Console.WriteLine("2. Додати до кошика");
             Console.WriteLine("3. Переглянути кошик");
             Console.WriteLine("4. Оформити замовлення");
@@ -110,13 +114,16 @@ class StartProgram
             {
                 case "1":
                     shop.DisplayMenu();
+
                     break;
                 case "2":
                     Console.Write("Введіть назву товару: ");
                     string item = Console.ReadLine();
                     Console.Write("Введіть кількість: ");
+
                     int quantity = int.Parse(Console.ReadLine());
                     shop.AddToCart(item, quantity);
+                    
                     break;
                 case "3":
                     shop.ViewCart();
@@ -126,10 +133,16 @@ class StartProgram
                     break;
                 case "5":
                     Console.WriteLine("Дякуємо, що відвідали нашу кав'ярню!");
-                    return;
+                    isFinish = true;
+                    break;
                 default:
                     Console.WriteLine("Невірний вибір, спробуйте ще раз.");
                     break;
+            }
+
+            if (isFinish)
+            {
+                break;
             }
         }
     }

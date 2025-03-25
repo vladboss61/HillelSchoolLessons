@@ -1,11 +1,32 @@
-﻿namespace Lesson7;
+﻿using System.Text;
+
+namespace Lesson7;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        var result = ConvertInchesToCm_1(10);
-        Console.WriteLine(result);
+
+        Console.OutputEncoding = Encoding.Unicode;
+        // var result = ConvertInchesToCm_1(4);
+        // Console.WriteLine(result);
+        StartProgram.Start();
+    }
+
+    static int FibonacciNumber(int count)
+    {
+        if (count == 0)
+        {
+            return 0;
+        }
+
+        if (count == 1)
+        {
+            return 1;
+        }
+
+        int fib = FibonacciNumber(count - 1) + FibonacciNumber(count - 2);
+        return fib;
     }
 
     static double ConvertInchesToCm_1(int inches)
@@ -17,11 +38,14 @@ internal class Program
     static void GenerateAndPrintRandomNumbers_2()
     {
         Random random = new Random();
+
         Console.WriteLine("Випадкові числа:");
 
         for (int i = 0; i < 10; i++)
         {
-            Console.WriteLine(random.Next(1, 101));
+            int randomNumber1 = random.Next(1, 101);
+            int randomNumber2 = random.Next(1, 101);
+            Console.WriteLine(randomNumber1 + randomNumber2);
         }
     }
 
@@ -33,7 +57,8 @@ internal class Program
         {
             int digit1 = i / 10;
             int digit2 = i % 10;
-            int sumOfSquares = (digit1 * digit1) + (digit2 * digit2);
+
+            int sumOfSquares = Convert.ToInt32(Math.Pow(digit1, 2)) + Convert.ToInt32(Math.Pow(digit2, 2));
 
             if (sumOfSquares % 13 == 0)
             {
@@ -42,18 +67,19 @@ internal class Program
         }
     }
 
-    static void Calculator4()
+    static void Calculator_4()
     {
         while (true)
         {
             Console.Write("Введіть перше число: ");
+
             if (!double.TryParse(Console.ReadLine(), out double num1))
             {
                 break;
             }
 
             Console.Write("Введіть операцію (+, -, *, /): ");
-            char operation = Console.ReadKey().KeyChar;
+            string operation = Console.ReadLine();
             Console.WriteLine();
 
             Console.Write("Введіть друге число: ");
@@ -67,10 +93,16 @@ internal class Program
 
             switch (operation)
             {
-                case '+': result = num1 + num2; break;
-                case '-': result = num1 - num2; break;
-                case '*': result = num1 * num2; break;
-                case '/':
+                case "+": result = num1 + num2;
+                    break;
+                
+                case "-": result = num1 - num2;
+                    break;
+                
+                case "*": result = num1 * num2;
+                    break;
+
+                case "/":
                     if (num2 != 0)
                     {
                         result = num1 / num2;
@@ -81,6 +113,7 @@ internal class Program
                         validOperation = false;
                     }
                     break;
+                
                 default:
                     Console.WriteLine("Невідома операція!");
                     validOperation = false;
@@ -101,7 +134,7 @@ internal class Program
         }
     }
 
-    static void CalculateAndDisplayFinalAmount6()
+    static void CalculateAndDisplayFinalAmount_6()
     {
         // Введення початкової суми вкладу та кількості місяців
         Console.Write("Введіть суму вкладу: ");
@@ -110,7 +143,7 @@ internal class Program
         Console.Write("Введіть кількість місяців: ");
         int months = Convert.ToInt32(Console.ReadLine());
 
-        double interestRate = 0.07; // 7% відсотків на місяць
+        const double interestRate = 0.07; // 7% відсотків на місяць
 
         // Цикл для нарахування відсотків кожного місяця
         for (int i = 1; i <= months; i++)
@@ -119,9 +152,9 @@ internal class Program
         }
 
         // Виведення результату
-        Console.WriteLine($"{Environment.NewLine}Кінцева сума вкладу після {months} місяців: {deposit:F2} грн.");
+        Console.WriteLine($"{Environment.NewLine}Кінцева сума вкладу після {months} місяців: {deposit:F3} грн.");
     }
-    static void MultiplyNumbers7()
+    static void MultiplyNumbers_7()
     {
         while (true)
         {
@@ -129,9 +162,9 @@ internal class Program
             int firstNumber = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Введіть друге число: ");
-            int secondNumber = Convert.ToInt32(Console.ReadLine());
+            int secondNumber = int.Parse(Console.ReadLine());
 
-            if (firstNumber >= 0 && firstNumber <= 10 && secondNumber >= 0 && secondNumber <= 10)
+            if ((firstNumber >= 0 && firstNumber <= 10) && (secondNumber >= 0 && secondNumber <= 10))
             {
                 int result = firstNumber * secondNumber;
                 Console.WriteLine($"Результат множення: {result}");
@@ -143,4 +176,5 @@ internal class Program
             }
         }
     }
+
 }
