@@ -5,6 +5,7 @@ internal class Program
     public static void Main()
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.InputEncoding = System.Text.Encoding.UTF8;
 
         // 1. Підрахунок кількості слів у рядку
         Console.WriteLine("1. Підрахунок кількості слів у рядку");
@@ -23,8 +24,8 @@ internal class Program
         int startPos = int.Parse(Console.ReadLine());
         Console.Write("Введіть довжину підрядка: ");
         int length = int.Parse(Console.ReadLine());
-        string substr = ExtractSubstring(input2, startPos, length);
-        Console.WriteLine($"Отриманий підрядок: {substr}");
+        string subStr = ExtractSubstring(input2, startPos, length);
+        Console.WriteLine($"Отриманий підрядок: {subStr}");
 
         // 3. Підрахунок букв, цифр і спецсимволів
         Console.WriteLine();
@@ -32,7 +33,7 @@ internal class Program
         Console.WriteLine("3. Підрахунок букв, цифр і спецсимволів");
         Console.Write("Введіть рядок: ");
         string input3 = Console.ReadLine();
-        CountCharacterTypes(input3, out int letters, out int digits, out int special);
+        var (letters, digits, special) = CountCharacterTypes(input3);
         Console.WriteLine($"Букви: {letters}");
         Console.WriteLine($"Цифри: {digits}");
         Console.WriteLine($"Спеціальні символи: {special}");
@@ -87,11 +88,11 @@ internal class Program
         return result;
     }
 
-    public static void CountCharacterTypes(string input, out int letters, out int digits, out int special)
+    public static (int letters, int digits, int special) CountCharacterTypes(string input)
     {
-        letters = 0;
-        digits = 0;
-        special = 0;
+        int letters = 0;
+        int digits = 0;
+        int special = 0;
 
         foreach (char c in input)
         {
@@ -113,10 +114,7 @@ internal class Program
                 special++;
             }
         }
-
-        Console.WriteLine($"Букви: {letters}");
-        Console.WriteLine($"Числа: {digits}");
-        Console.WriteLine($"Інші символи: {special}");
+        return (letters, digits, special);
     }
 
     public static void FindMostFrequentChar(string input)
