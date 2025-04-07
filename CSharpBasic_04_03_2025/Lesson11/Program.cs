@@ -59,28 +59,14 @@ internal class Program
 
     public static int CountWords(string input)
     {
-        int count = 0;
-        bool inWord = false;
-
-        foreach (char c in input)
-        {
-            if (!char.IsWhiteSpace(c) && !inWord)
-            {
-                inWord = true;
-                count++;
-            }
-            else if (char.IsWhiteSpace(c))
-            {
-                inWord = false;
-            }
-        }
-
-        return count;
+        return input.Split(" ").Length;
     }
 
     public static string ExtractSubstring(string input, int start, int length)
     {
         string result = string.Empty;
+
+        // start + length - з якого символу починаємо та скільки беремо
         for (int i = start; i < start + length && i < input.Length; i++)
         {
             result += input[i];
@@ -171,7 +157,8 @@ internal class Program
         return count;
     }
 
-    static int CountSubstringOccurrencesWithLinq(string text, string substring)
+    // Ще одне рішення через LINQ
+    public static int CountSubstringOccurrencesWithLinq(string text, string substring)
     {
         if (string.IsNullOrEmpty(substring) || string.IsNullOrEmpty(text) || substring.Length > text.Length)
         {
