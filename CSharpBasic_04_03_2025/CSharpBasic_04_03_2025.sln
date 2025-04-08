@@ -23,7 +23,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson9", "Lesson9\Lesson9.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson10", "Lesson10\Lesson10.csproj", "{FC7FBB15-17AA-46F3-9269-1BBF2379D31A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson11", "Lesson11\Lesson11.csproj", "{1412FD2D-E199-4BE5-95C8-7EDFD16AE0DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson11", "Lesson11\Lesson11.csproj", "{1412FD2D-E199-4BE5-95C8-7EDFD16AE0DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77554E4E-32E5-48A2-8450-706CAE40A902}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

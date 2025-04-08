@@ -12,7 +12,7 @@ internal class Program
 
     static void Main(string[] args)
     {
-        PadLefAndRightExample();
+        PadLeftAndRightExample();
 
         double temperature = 25.5;
         string formattedTemperature = temperature.ToString("N2");
@@ -116,7 +116,7 @@ internal class Program
     }
 
 
-    public static void PadLefAndRightExample()
+    public static void PadLeftAndRightExample()
     {
         string example = "Lorem";
 
