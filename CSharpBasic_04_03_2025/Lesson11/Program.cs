@@ -17,7 +17,7 @@ internal class Program
         // 2. Вилучення підрядка без бібліотечних функцій
         Console.WriteLine();
 
-        Console.WriteLine("2. Вилучення підрядка без бібліотечних функцій");
+        Console.WriteLine("2. Вилучення підрядка");
         Console.Write("Введіть рядок: ");
         string input2 = Console.ReadLine();
         Console.Write("Введіть початкову позицію: ");
@@ -100,6 +100,8 @@ internal class Program
                 special++;
             }
         }
+
+        // Tuple
         return (letters, digits, special);
     }
 
@@ -127,7 +129,7 @@ internal class Program
 
         foreach (var frequency in frequencies)
         {
-            Console.WriteLine($"Char: {frequency.Key} - {frequency.Value}");
+            Console.WriteLine($"Char: {frequency.Key} | Count: {frequency.Value}");
         }
     }
 
