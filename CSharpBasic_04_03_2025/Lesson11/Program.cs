@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Lesson11;
 
@@ -6,9 +7,14 @@ internal class Program
 {
     public static void Main()
     {
-        Console.OutputEncoding = Encoding.UTF8;
-        Console.InputEncoding = Encoding.UTF8;
+        Console.OutputEncoding = Encoding.Unicode;
+        Console.InputEncoding = Encoding.Unicode;
 
+        //Console.CursorSize = 10;
+        //Console.SetCursorPosition(10, 10);
+
+        //Example
+        //int lengthEx = CountWordsManually("test word ph");
 
         // 1. Підрахунок кількості слів у рядку
         Console.WriteLine("1. Підрахунок кількості слів у рядку");
@@ -18,7 +24,6 @@ internal class Program
         Console.WriteLine($"Загальна кількість слів у рядку: {wordCount}");
 
         // Alternative variant
-        //var length = CountWordsManually("test word ph");
 
         // 2. Вилучення підрядка без бібліотечних функцій
         Console.WriteLine();
@@ -59,22 +64,51 @@ internal class Program
         string original = Console.ReadLine();
         Console.Write("Введіть рядок для пошуку: ");
         string search = Console.ReadLine();
-        int count = CountSubstringOccurrences(original, search);
+        int count = CountSubstringOccurrencesWithDictionary(original, search);
         Console.WriteLine($"Рядок '{search}' зустрічається {count} раз");
     }
 
     public static int CountWords(string input)
     {
-        return input.Split(" ").Length;
+        string[] words = input.Split(" ");
+        //string[] newWords = words.Where(word => word != string.Empty).ToArray();
+
+        int countExactlyWords = 0;
+        for (int i = 0; i < words.Length; i++)
+        {
+            if (words[i] == string.Empty)
+            {
+                continue;
+            }
+
+            countExactlyWords++;
+        }
+
+        string[] newWords = new string[countExactlyWords];
+
+        int wordIndex = 0;
+        for (int i = 0; i < words.Length; i++)
+        {
+            if (words[i] == string.Empty)
+            {
+                continue;
+            }
+            newWords[wordIndex] = words[i];
+            wordIndex++;
+        }
+
+        return newWords.Length;
     }
 
     public static int CountWordsManually(string input)
     {
-        if (string.IsNullOrEmpty(input))
+        // "       " or "" or null
+        if (string.IsNullOrWhiteSpace(input) || string.IsNullOrEmpty(input))
         {
             return 0;
         }
 
+        // hello world
         int wordLength = 1;
         foreach (char symbol in input)
         {
@@ -91,7 +125,9 @@ internal class Program
     {
         string result = string.Empty;
 
+        // input.Substring(start, length);
         // start + length - з якого символу починаємо та скільки беремо
+        // start 3 + length 5 = 8
         for (int i = start; i < start + length && i < input.Length; i++)
         {
             result += input[i];
@@ -127,7 +163,44 @@ internal class Program
         }
 
         // Tuple
+        // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-tuples
+        // Обгортка над - https://learn.microsoft.com/en-us/dotnet/api/system.tuple?view=net-9.0
+
         return (letters, digits, special);
+    }
+
+    public static Tuple<int, int, int> CountCharacterTypesTuple(string input)
+    {
+        int letters = 0;
+        int digits = 0;
+        int special = 0;
+
+        foreach (char c in input)
+        {
+            if (char.IsWhiteSpace(c))
+            {
+                continue;
+            }
+
+            if (char.IsLetter(c))
+            {
+                letters++;
+            }
+            else if (char.IsDigit(c))
+            {
+                digits++;
+            }
+            else
+            {
+                special++;
+            }
+        }
+
+        // Tuple
+        // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-tuples
+        // Обгортка над - https://learn.microsoft.com/en-us/dotnet/api/system.tuple?view=net-9.0
+
+        return new Tuple<int, int, int>(letters, digits, special);
     }
 
     public static void FindMostFrequentChar(string input)
@@ -144,7 +217,7 @@ internal class Program
 
             if (frequencies.ContainsKey(c))
             {
-                frequencies[c]++;
+                frequencies[c] = frequencies[c] + 1;
             }
             else
             {
@@ -201,11 +274,16 @@ internal class Program
      */
     public static int CountSubstringOccurrences(string text, string substring)
     {
+        //https://learn.microsoft.com/ru-ru/dotnet/standard/base-types/regular-expressions
+        //Regex regex = new Regex("^[a-z]*");
+        //regex.Match(text);
+
         // test test test  14 chars
         // test 4 chars
 
         int count = 0;
         // 14 - 4 = 10
+
         for (int i = 0; i <= text.Length - substring.Length; i++)
         {
             bool match = true;
@@ -222,7 +300,39 @@ internal class Program
                 count++;
             }
         }
+
         return count;
+    }
+
+    public static int CountSubstringOccurrencesWithDictionary(string text, string substring)
+    {
+        if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(substring))
+        {
+            return 0;
+        }
+
+        Dictionary<string, int> dictionary = new Dictionary<string, int>();
+        string[] words = text.Split(null).Where(word => word != string.Empty).ToArray();
+
+        foreach (string word in words)
+        {
+
+            if (dictionary.ContainsKey(word))
+            {
+                dictionary[word] = dictionary[word] + 1;
+            }
+            else
+            {
+                dictionary[word] = 1;
+            }
+        }
+
+        if (dictionary.ContainsKey(substring))
+        {
+            return dictionary[substring];
+        }
+
+        return 0;
     }
 
     // Ще одне рішення через LINQ
@@ -233,7 +343,6 @@ internal class Program
             return 0;
         }
 
-        return Enumerable.Range(0, text.Length - substring.Length + 1)
-                         .Count(i => text.Substring(i, substring.Length) == substring);
+        return Enumerable.Range(0, text.Length - substring.Length + 1).Count(i => text.Substring(i, substring.Length) == substring);
     }
 }
