@@ -8,7 +8,6 @@ internal class Program
     {
         var calculator = new Calculator();
         var res = calculator.Add(10, 20);
-        Main(args);
         Console.WriteLine("Hello, World!");
     }
 
