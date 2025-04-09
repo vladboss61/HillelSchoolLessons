@@ -312,7 +312,7 @@ internal class Program
         }
 
         Dictionary<string, int> dictionary = new Dictionary<string, int>();
-        string[] words = text.Split(null).Where(word => word != string.Empty).ToArray();
+        string[] words = text.Split(text).Where(word => word != string.Empty).ToArray();
 
         foreach (string word in words)
         {
