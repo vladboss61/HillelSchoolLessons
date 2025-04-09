@@ -4,6 +4,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        var calculator = new Calculator();
+        var res = calculator.Add(10, 20);
+        Main(args);
         Console.WriteLine("Hello, World!");
     }
 
