@@ -17,4 +17,28 @@ internal class StringHelper
 
         return new string(reversed);
     }
+
+    static int CountVowels(string input)
+    {
+        int count = 0;
+        string vowels = "aeiou";
+
+        foreach (char c in input.ToLower())
+        {
+            if (vowels.Contains(c))
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    static bool IsPalindrome(string inputStr)
+    {
+        char[] arr = inputStr.ToCharArray();
+        Array.Reverse(arr);
+        var reversedStr = new string(arr);
+        return inputStr == reversedStr;
+    }
 }
