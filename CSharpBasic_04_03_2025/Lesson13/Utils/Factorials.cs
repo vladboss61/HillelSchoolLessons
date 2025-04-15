@@ -1,6 +1,6 @@
-﻿namespace Lesson13;
+﻿namespace Lesson13.Utils;
 
-internal class Factorials
+internal static class Factorials
 {
     public static int Factorial(int n)
     {
@@ -17,6 +17,11 @@ internal class Factorials
         return n * temp;
     }
 
+    /// <summary>
+    ///     This method calculates factorial iteratively.
+    /// </summary>
+    /// <param name="n">Parameter for count of factorial</param>
+    /// <returns>Calculated factorial</returns>
     public static int FactorialIteratively(int n)
     {
         int result = 1;
