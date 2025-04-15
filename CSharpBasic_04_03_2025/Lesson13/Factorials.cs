@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Lesson13;
 
-namespace Lesson13;
 internal class Factorials
 {
     public static int Factorial(int n)
@@ -22,11 +17,11 @@ internal class Factorials
         return n * temp;
     }
 
-    public static int FactorialiIteratively(int n)
+    public static int FactorialIteratively(int n)
     {
         int result = 1;
 
-        for (int i = 0; i < n; i++)
+        for (int i = 1; i <= n; i++)
         {
             result = result * i;
         }

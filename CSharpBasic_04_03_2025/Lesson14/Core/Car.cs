@@ -10,6 +10,7 @@ namespace Lesson14.Core;
 internal class Car
 {
     private string model;
+
     private int age;
 
     public Car(string model, int age)
@@ -18,9 +19,9 @@ internal class Car
         this.age = age;
     }
 
-    public string Name
+    public string Model
     {
-        get { return name; }
+        get { return model; }
     }
 
     public int Age
