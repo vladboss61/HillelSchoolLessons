@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Lesson16;
 
@@ -7,8 +6,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Console.OutputEncoding = Encoding.Unicode;
-        Console.InputEncoding = Encoding.Unicode;
+        Console.WriteLine(Console.OutputEncoding.EncodingName);
+        Console.WriteLine(Console.InputEncoding.EncodingName);
+
+        Console.WriteLine(Console.OutputEncoding.EncodingName);
+        Console.WriteLine(Console.InputEncoding.EncodingName);
 
         ReadFileContentWithStreamReader();
     }
