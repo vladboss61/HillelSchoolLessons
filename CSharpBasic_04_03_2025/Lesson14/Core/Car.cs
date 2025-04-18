@@ -21,7 +21,9 @@ internal class Car
 
     public string Model
     {
-        get { return model; }
+        get {
+            return model;
+        }
     }
 
     public int Age
@@ -37,6 +39,18 @@ internal class Car
             {
                 Console.WriteLine("Wrong age value");
             }
+        }
+    }
+
+    public void SetAge(int age)
+    {
+        if (age > 0 && age < 120)
+        {
+            this.age = age;
+        }
+        else
+        {
+            Console.WriteLine("Wrong age value");
         }
     }
 }

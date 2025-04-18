@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Lesson13.Utils;
+using Lesson14.Core;
 
 namespace Lesson13;
 
@@ -7,6 +8,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        var s = new Circle();
+
+        s.measure = Measure.Miles;
+        s.diameter = 10;
+        s.radius = 10;
+
         MathHelp.InnerClass.Update();
 
         int a = 10;

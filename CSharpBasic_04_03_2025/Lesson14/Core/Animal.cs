@@ -8,9 +8,21 @@ namespace Lesson14.Core;
 
 public class Animal
 {
-    public string Type { get; set; }
+    private string name;
 
-    public string Name { get; set; }
+    public string Type { get; }
+
+    public string Name {
+        get
+        {
+            Console.WriteLine("Changed Logic");
+            return name;
+        }
+        set
+        {
+            this.name = value;
+        }
+    }
 
     public Animal(string name, string type)
     {
