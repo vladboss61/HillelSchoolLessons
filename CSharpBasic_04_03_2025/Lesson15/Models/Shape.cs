@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lesson15.Models;
 
-public class Shape
+public class Shape //: object // Кожний класс успадковується від object за замовчуванням
+                   //  в якому э 3 методи (virtual toString(), vitural Equals(), vitural GetHashCode(), GetType())
 {
     // A few example members
     public int X { get; private set; }
@@ -19,6 +20,11 @@ public class Shape
     {
         Console.WriteLine("Performing base class drawing tasks");
     }
+
+    public sealed override string ToString()
+    {
+        return "This is Shape";
+    }
 }
 
 public sealed class Circle : Shape
@@ -30,17 +36,31 @@ public sealed class Circle : Shape
     }
 }
 
-public sealed class Rectangle : Shape
+public class Rectangle : Shape
 {
-    public override void Draw()
+    public sealed override void Draw()
     {
         // Code to draw a rectangle...
         Console.WriteLine("Drawing a rectangle");
+    }
+
+    public virtual int GetWith()
+    {
+        return Width;
+    }
+}
+
+public sealed class Square : Rectangle
+{
+    public override int GetWith()
+    {
+        return 10;
     }
 }
 
 public sealed class Triangle : Shape
 {
+
     public override sealed void Draw()
     {
         // Code to draw a triangle...
