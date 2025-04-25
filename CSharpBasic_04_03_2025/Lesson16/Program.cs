@@ -6,13 +6,71 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine(Console.OutputEncoding.EncodingName);
-        Console.WriteLine(Console.InputEncoding.EncodingName);
+        string content = File.ReadAllText("./files/stuctured_data.txt");
+        Console.WriteLine(content);
+        string[] splitContent = content.Split(",");
 
-        Console.WriteLine(Console.OutputEncoding.EncodingName);
-        Console.WriteLine(Console.InputEncoding.EncodingName);
+        foreach (string line in splitContent)
+        {
+            Console.WriteLine(line);
+        }
 
+        string pathExample = Path.Combine(".", "..", "..", "example.txt");
+        string fileName = Path.GetFileName(pathExample);
+        string fileExtension = Path.GetExtension(pathExample);
+        string fullPath = Path.GetFullPath(fileName);
+        char slash = Path.DirectorySeparatorChar;
+
+        // "./folder/inner-folder"
+        var pathJoin = Path.Join(".", "..", "..", "example.txt");
+        var randomPath = Path.GetTempPath();
+        var randomFileName = Path.GetRandomFileName();
+        string pathRelative = "./../../example.txt";
+
+        ReadFileByChunks();
+
+        WriteBinaryData();
         ReadFileContentWithStreamReader();
+        //FileInfoExample();
+
+        DeleteFile();
+
+        //CreateFile("test_hillel.txt");
+        ReadFileContentByLines();
+
+        ReadFileContentByLines();
+
+        Console.OutputEncoding = Encoding.Unicode;
+        Console.InputEncoding = Encoding.Unicode;
+
+        // D:\DevOps
+        string path = Path.Combine("D:", "DevOps");
+        string[] directories = Directory.GetFiles(path);
+
+        CreateDirectory("New_Folder");
+
+        //DisksInformation();
+
+
+        Console.WriteLine(Console.OutputEncoding.EncodingName);
+        Console.WriteLine(Console.InputEncoding.EncodingName);
+
+        Console.WriteLine(Console.OutputEncoding.EncodingName);
+        Console.WriteLine(Console.InputEncoding.EncodingName);
+
+        //ReadFileContentWithStreamReader();
+    }
+
+    public static void DeleteFile()
+    {
+        string relativeFilePath = @"./files/data.txt";
+        File.Delete(relativeFilePath);
+    }
+
+    public static void WriteAllText()
+    {
+        string relativeFilePath = @"./files/data.txt";
+        File.AppendAllText(relativeFilePath, "Hello Write All Text Function");
     }
 
     public static void ReadAllFileContent()
@@ -42,9 +100,10 @@ internal class Program
     public static void ReadFileContentByLines()
     {
         string filePath = "./files/data.txt";
-
+        //string filePath = @"D:\test_hillel.txt";
         if (File.Exists(filePath))
         {
+            
             string[] lines = File.ReadAllLines(filePath);
             foreach (string line in lines)
             {
@@ -61,7 +120,7 @@ internal class Program
     {
         string filePath = "./files/data.txt";
 
-        using StreamReader reader = new StreamReader(filePath);
+        using StreamReader reader = new StreamReader(filePath, Encoding.UTF8);
 
         while (!reader.EndOfStream)
         {
@@ -115,18 +174,18 @@ internal class Program
 
     public static void CreateFile(string fileName)
     {
-        var path = Path.Combine("D:", fileName);
+        string path = Path.Combine("D:", fileName);
         if (File.Exists(path))
         {
             return;
         }
 
         // Creating file.
-        using var fileStream = File.Create(path);
+        using FileStream fileStream = File.Create(path);
 
         // Writing to file.
         // Second parameter is optional, by default UTF8.
-        using var writer = new StreamWriter(fileStream, Encoding.UTF8);
+        using StreamWriter writer = new StreamWriter(fileStream, Encoding.UTF8);
 
         writer.WriteLine("Hello File");
         writer.WriteLine("Created");
@@ -176,7 +235,7 @@ internal class Program
         string filePath = "sample.bin";
 
         // Запис у бінарний файл
-        byte[] dataToWrite = { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello" у байтах
+        byte[] dataToWrite = { 0x48, 0x65, 0x6C, 0x6C, 0x6F /*111*/ }; // "Hello" у байтах
         File.WriteAllBytes(filePath, dataToWrite);
 
         // Читання з бінарного файлу
@@ -184,5 +243,4 @@ internal class Program
         string content = Encoding.UTF8.GetString(readData);
         Console.WriteLine(content); // Виведе "Hello"
     }
-
 }
