@@ -1,25 +1,35 @@
-﻿using Lesson12;
+﻿// Copyright 2025 Hillel. All rights reserved.
+// This source code file.
 
 namespace Lesson1;
 
+using System;
+
+/// <summary>
+///     Start point.
+/// </summary>
 internal class Program
 {
-    // Comment in CSharp.
-    // PascalCase
-    static void Main(string[] args)
+    /// <summary>
+    ///     Main.
+    /// </summary>
+    /// <param name="args">Args.</param>
+    public static void Main(string[] args)
     {
+        // Comment in CSharp.
+        // PascalCase
+
         // https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names
 
         // camelCase
 
-        //int aget = 1033123;
+        // int aget = 1033123;
 
-        //double weight1 = 100.10;
-        //float weight2 = 100.10;
+        // double weight1 = 100.10;
+        // float weight2 = 100.10;
 
-        //bool isWinter = false;
-        //bool isSpring = true;
-
+        // bool isWinter = false;
+        // bool isSpring = true;
         string firstName = "Vlad";
         string lastName = "Varvashenko";
 
@@ -29,7 +39,10 @@ internal class Program
         Console.WriteLine("Hello, World!");
     }
 
-    public static void SimpleFunction()
+    /// <summary>
+    ///     SimpleFunction.
+    /// </summary>
+    private static void SimpleFunction()
     {
         Console.WriteLine("Hello Simple Function/Method");
     }

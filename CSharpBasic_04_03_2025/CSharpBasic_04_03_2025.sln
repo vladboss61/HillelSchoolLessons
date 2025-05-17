@@ -37,9 +37,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson13", "Lesson13\Lesson
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson14", "Lesson14\Lesson14.csproj", "{A24D706A-0FB2-46F1-8086-B5EE468354F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson15", "Lesson15\Lesson15.csproj", "{727CF898-48F2-4184-815B-9DFD8F29418F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson15", "Lesson15\Lesson15.csproj", "{727CF898-48F2-4184-815B-9DFD8F29418F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson16", "Lesson16\Lesson16.csproj", "{11CF11A5-9650-45BC-AAFA-B6070BB03E51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson16", "Lesson16\Lesson16.csproj", "{11CF11A5-9650-45BC-AAFA-B6070BB03E51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "conf", "conf", "{B60233E4-061B-48EE-90FA-CFA618C2FC53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StyleCop.Analyzers", "StyleCop.Analyzers", "{C1658A90-F398-4E80-87F0-405277013CE4}"
+	ProjectSection(SolutionItems) = preProject
+		conf\StyleCop.Analyzers\StyleCop.json = conf\StyleCop.Analyzers\StyleCop.json
+		conf\StyleCop.Analyzers\Suppressions.cs = conf\StyleCop.Analyzers\Suppressions.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -114,6 +122,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C1658A90-F398-4E80-87F0-405277013CE4} = {B60233E4-061B-48EE-90FA-CFA618C2FC53}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10DFBA6B-2F71-4101-A74B-428A76EBE540}
