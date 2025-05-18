@@ -3,16 +3,28 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
+    <StyleCopFolder>StyleCop.Analyzers</StyleCopFolder>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="../conf/StyleCop.Analyzers/Suppressions.cs" Link="Properties/Suppressions.cs" />
+    <Compile Include="../conf/$(StyleCopFolder)/Suppressions.cs" Link="Properties/Suppressions.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="../conf/StyleCop.Analyzers/StyleCop.json" Link="Properties/StyleCop.json" />
+    <AdditionalFiles Include="../conf/$(StyleCopFolder)/StyleCop.json" Link="Properties/StyleCop.json" />
   </ItemGroup>
 
+  <!--Just example of MSBuild Conditions-->
+  <PropertyGroup Condition="'$(Configuration)'=='Release' And '$(Platform)'=='x64'">
+    <OptimizationLevel>High</OptimizationLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="Exists('$(ProjectDir)\config.json')">
+    <UseConfigFile>true</UseConfigFile>
+  </PropertyGroup>
+  
+  <!--Just example of MSBuild Conditions-->
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -53,4 +65,34 @@
       <LastGenOutput>LocalizationStrs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <!--Just example of output text of general-useful variables to VS console when build project.-->
+  <Target Name="ExampleShowMyOutputPath" AfterTargets="Build">
+    <Message Importance="high" Text="Output File: $(MyOutputFile)" />
+    <Message Importance="high" Text="MSBuildProjectName: $(MSBuildProjectName)" />
+    <Message Importance="high" Text="MSBuildProjectFile: $(MSBuildProjectFile)" />
+    <Message Importance="high" Text="MSBuildProjectExtension: $(MSBuildProjectExtension)" />
+    <Message Importance="high" Text="MSBuildProjectDirectory: $(MSBuildProjectDirectory)" />
+    <Message Importance="high" Text="MSBuildThisFile: $(MSBuildThisFile)" />
+    <Message Importance="high" Text="Configuration: $(Configuration)" />
+    <Message Importance="high" Text="Platform: $(Platform)" />
+    <Message Importance="high" Text="OutputPath: $(OutputPath)" />
+    <Message Importance="high" Text="TargetFramework: $(TargetFramework)" />
+    <Message Importance="high" Text="AssemblyName: $(AssemblyName)" />
+    <Message Importance="high" Text="OutDir: $(OutDir)" />
+    <Message Importance="high" Text="BaseIntermediateOutputPath: $(BaseIntermediateOutputPath)" />
+    <Message Importance="high" Text="TargetDir: $(TargetDir)" />
+    <Message Importance="high" Text="TargetPath: $(TargetPath)" />
+    <Message Importance="high" Text="ProjectDir: $(ProjectDir)" />
+    <Message Importance="high" Text="AssemblyName: $(AssemblyName)" />
+    <Message Importance="high" Text="AssemblyVersion: $(AssemblyVersion)" />
+    <Message Importance="high" Text="Version: $(Version)" />
+    <Message Importance="high" Text="FileVersion: $(FileVersion)" />
+    <Message Importance="high" Text="MSBuildSDKsPath: $(MSBuildSDKsPath)" />
+    <Message Importance="high" Text="MSBuildStartupDirectory: $(MSBuildStartupDirectory)" />
+    <Message Importance="high" Text="MSBuildBinPath: $(MSBuildBinPath)" />
+    <Message Importance="high" Text="MSBuildToolsVersion: $(MSBuildToolsVersion)" />
+  </Target>
+  <!--Just example of output text of general-useful variables to VS console when build project.-->
+
 </Project>
