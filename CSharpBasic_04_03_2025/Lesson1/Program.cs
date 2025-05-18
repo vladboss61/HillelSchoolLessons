@@ -4,8 +4,6 @@
 namespace Lesson1;
 
 using System;
-using System.Globalization;
-using System.Threading;
 using Lesson1.Resources;
 
 /// <summary>
@@ -19,11 +17,24 @@ internal class Program
     /// <param name="args">Args.</param>
     public static void Main(string[] args)
     {
-        var localizationDaDkSwitch = new LocalizationSwitch("da-DK");
-        localizationDaDkSwitch.Execute(() => Console.WriteLine(LocalizationStrs.Output));
+        Console.WriteLine("Case 1:");
+        var localizationDaDkSwitch = new LocalizationSwitch(LocalizationStrs.ResourceManager, "da-DK");
+        var localizationDeDeSwitch = new LocalizationSwitch(LocalizationStrs.ResourceManager, "de-DE");
 
-        var localizationDeDeSwitch = new LocalizationSwitch("de-DE");
+        localizationDaDkSwitch.Execute(() => Console.WriteLine(LocalizationStrs.Output));
         localizationDeDeSwitch.Execute(() => Console.WriteLine(LocalizationStrs.Output));
+
+        Console.WriteLine("Case 2:");
+        Console.WriteLine(localizationDaDkSwitch.GetString(nameof(LocalizationStrs.Output)));
+        Console.WriteLine(localizationDeDeSwitch.GetString(nameof(LocalizationStrs.Output)));
+
+        Console.WriteLine("Case 3:");
+        Console.WriteLine(localizationDaDkSwitch.GetString("Nameofapplication")); // case insensitive
+        Console.WriteLine(localizationDeDeSwitch.GetString("NameOfApplication"));
+
+        Console.WriteLine("Case 4:");
+        Console.WriteLine(localizationDaDkSwitch[nameof(LocalizationStrs.Output)]);
+        Console.WriteLine(localizationDeDeSwitch[nameof(LocalizationStrs.Output)]);
 
         Console.WriteLine("Fine.");
 
