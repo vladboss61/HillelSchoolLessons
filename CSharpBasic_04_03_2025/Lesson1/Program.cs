@@ -4,6 +4,9 @@
 namespace Lesson1;
 
 using System;
+using System.Globalization;
+using System.Threading;
+using Lesson1.Resources;
 
 /// <summary>
 ///     Start point.
@@ -14,7 +17,13 @@ internal class Program
     ///     Main.
     /// </summary>
     /// <param name="args">Args.</param>
-    public static void Main(string[] args) {
+    public static void Main(string[] args)
+    {
+        SwitchCulture("da-DK", () => Console.WriteLine(LocalizationStrs.Output));
+        SwitchCulture("de-DE", () => Console.WriteLine(LocalizationStrs.Output));
+
+        Console.WriteLine("Fine.");
+
         // Comment in CSharp.
         // PascalCase
 
@@ -36,6 +45,30 @@ internal class Program
         Console.WriteLine(lastName);
 
         Console.WriteLine("Hello, World!");
+    }
+
+    /// <summary>
+    ///     Performs the action and switch culture.
+    /// </summary>
+    /// <param name="culture">Switched culture.</param>
+    /// <param name="action">Action.</param>
+    public static void SwitchCulture(string culture, Action action)
+    {
+        CultureInfo prevCulture = Thread.CurrentThread.CurrentCulture;
+        CultureInfo prevUICulture = Thread.CurrentThread.CurrentUICulture;
+        CultureInfo currentCulture = new CultureInfo(culture);
+        try
+        {
+            Thread.CurrentThread.CurrentCulture = currentCulture;
+            Thread.CurrentThread.CurrentUICulture = currentCulture;
+
+            action();
+        }
+        finally
+        {
+            Thread.CurrentThread.CurrentCulture = prevCulture;
+            Thread.CurrentThread.CurrentUICulture = prevUICulture;
+        }
     }
 
     /// <summary>

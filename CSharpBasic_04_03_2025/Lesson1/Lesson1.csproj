@@ -31,4 +31,26 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Resources\LocalizationStrs.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LocalizationStrs.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+  <!--Manually update, not from VS-->
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\LocalizationStrs.da-DK.resx">
+      <DependentUpon>LocalizationStrs.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\LocalizationStrs.de-DE.resx">
+      <DependentUpon>LocalizationStrs.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\LocalizationStrs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizationStrs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
