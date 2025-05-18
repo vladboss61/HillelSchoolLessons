@@ -14,8 +14,7 @@ internal class Program
     ///     Main.
     /// </summary>
     /// <param name="args">Args.</param>
-    public static void Main(string[] args)
-    {
+    public static void Main(string[] args) {
         // Comment in CSharp.
         // PascalCase
 

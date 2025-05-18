@@ -4,7 +4,7 @@
     // following page for additional information:
     //
     // Template Version: 1.0.0 (2025-01-01)
-    //
+    // 
     // https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/EnableConfiguration.md
     "$schema":
         "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
